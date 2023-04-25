@@ -10,14 +10,16 @@ function LandingPage() {
 
   useEffect(() => {
     getWeatherData();
-    console.log(weatherData)
   }, []);
+
+  console.log(weatherData?.main)
 
   return (
     <div>
       <h1>Weather App</h1>
       {weatherData ? (
         <div>
+          <h1>{weatherData.name}</h1>
           <p>Temperature: {weatherData.main.temp}°C</p>
           <p>Weather Description: </p>
         </div>
