@@ -27,7 +27,7 @@ const useApi = () => {
         if (lat && lng) {
           axios
             .get<ApiResponse>(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${import.meta.env.VITE_APIkey2}`
+              `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${import.meta.env.VITE_APIkey}`
             )
             .then((response) => {
               setWeatherData(response.data);
