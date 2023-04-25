@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useApi from "../components/Api";
 import useStoreWeather from "../store/storeWeather";
+import Header from "../components/Header";
 
 function LandingPage() {
   const { weatherData } = useStoreWeather((state) => ({
@@ -12,20 +13,9 @@ function LandingPage() {
     getWeatherData();
   }, []);
 
-  console.log(weatherData?.main)
-
   return (
     <div>
-      <h1>Weather App</h1>
-      {weatherData ? (
-        <div>
-          <h1>{weatherData.name}</h1>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Weather Description: </p>
-        </div>
-      ) : (
-        <p>Loading weather data...</p>
-      )}
+        <Header></Header>
     </div>
   );
 }

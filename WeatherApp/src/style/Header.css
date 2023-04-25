@@ -1,0 +1,52 @@
+.container {
+    width: 80vw;
+    margin: 20px auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.section-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.section-icons > .icon {
+    font-size: 30px;
+    color: #D62F2F;
+}
+
+.section-icons > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.section-icons > div > button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #CBCBCB;
+}
+
+.section-icons > div > button:hover {
+    color: #D62F2F;
+}
+
+.active {
+    color: #12355B !important;
+    font-weight: 600;
+}
+
+.section-icons > div > p {
+    font-size: 20px;
+    margin: 0 10px;
+    color: #CBCBCB;
+}

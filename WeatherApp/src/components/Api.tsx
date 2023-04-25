@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useStoreWeather from '../store/storeWeather';
 import { ApiResponse } from '../interface/ApiResponse';
-import useStoreUnit from '../store/storeunits';
 
 const useApi = () => {
     const { setWeatherData } = useStoreWeather((state) => ({
