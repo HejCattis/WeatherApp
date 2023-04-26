@@ -16,18 +16,18 @@ function Header({subtitle, title, icon, text}: HeaderProps) {
   const [save, setSave] = useState(false)
 
   const { storeUnit, setStoreUnit } = useStoreUnit();
-  const { updateWeatherData, weatherData } = useStoreWeather(); // get the store state and updater function
+  const { updateWeatherData, weatherData } = useStoreWeather();
+
   const handleClick = (unit: string) => {
     setStoreUnit(unit);
-
-    // convert temperature to selected unit
+    
     const temperature = weatherData?.main?.temp;
     if (temperature) {
       const convertedTemp = unit === 'metric' ? (temperature - 32) * 5 / 9 : temperature * 9 / 5 + 32;
       updateWeatherData({ main: { ...weatherData.main, temp: convertedTemp } });
     }
   }  
-
+// FIXA DENNA
   const handleSave = () => {
     setSave(!save);
   }
