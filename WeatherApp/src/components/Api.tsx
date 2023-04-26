@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useStoreWeather from '../store/storeWeather';
 import { ApiResponse } from '../interface/ApiResponse';
+import useStoreUnit from '../store/storeUnits';
 
 function Api () {
     const { setWeatherData } = useStoreWeather((state) => ({
       setWeatherData: state.setWeatherData,
     }));
-  
+  // LÄGG TILL I API
+    const { storeUnit } = useStoreUnit();
 
     const [lat, setLat] = useState<null | number>(null);
     const [lng, setLng] = useState<null | number>(null);

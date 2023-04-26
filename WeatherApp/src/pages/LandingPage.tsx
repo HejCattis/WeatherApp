@@ -10,10 +10,9 @@ function LandingPage() {
   const { weatherData } = useStoreWeather((state) => ({
     weatherData: state.weatherData,
   }));
+  
   const { getWeatherData } = Api();
-
-  const today = new Date();
-  const formattedDate = formatDate(today);
+  const formattedDate = formatDate(new Date());
 
   useEffect(() => {
     getWeatherData();
