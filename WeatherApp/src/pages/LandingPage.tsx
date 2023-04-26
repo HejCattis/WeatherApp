@@ -1,23 +1,16 @@
 import { useEffect } from "react";
-import useApi from "../components/Api";
+import Api from "../components/Api";
 import useStoreWeather from "../store/storeWeather";
 import Header from "../components/Header";
 import WeatherIcon from "../components/WeatherIcon";
+import { formatDate } from "../utils/dateUtils";
 
 
 function LandingPage() {
   const { weatherData } = useStoreWeather((state) => ({
     weatherData: state.weatherData,
   }));
-  const { getWeatherData } = useApi();
-  const formatDate = (date: Date) => {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const dayOfWeek = days[date.getDay()];
-    const dayOfMonth = date.getDate();
-    const month = months[date.getMonth()];
-    return `${dayOfWeek}, ${dayOfMonth} ${month}`;
-  }
+  const { getWeatherData } = Api();
 
   const today = new Date();
   const formattedDate = formatDate(today);

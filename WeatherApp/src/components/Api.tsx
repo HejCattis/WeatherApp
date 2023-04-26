@@ -3,7 +3,7 @@ import axios from 'axios';
 import useStoreWeather from '../store/storeWeather';
 import { ApiResponse } from '../interface/ApiResponse';
 
-const useApi = () => {
+function Api () {
     const { setWeatherData } = useStoreWeather((state) => ({
       setWeatherData: state.setWeatherData,
     }));
@@ -88,4 +88,4 @@ const useApi = () => {
   };
   
 
-export default useApi;
+export default Api;
