@@ -1,5 +1,6 @@
 import "../style/Header.css"
 import { FaRegStar, FaStar } from "react-icons/fa";
+import useStoreUnit from "../store/storeUnits";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -11,12 +12,13 @@ interface HeaderProps {
 
 function Header({subtitle, title, icon, text}: HeaderProps) {
 
-  const [unit, setUnit] = useState('celsius')
   const [save, setSave] = useState(false)
 
-  const handleClick = (value: string) => {
-    setUnit(value);
-  }
+  const { storeUnit, setStoreUnit } = useStoreUnit();
+
+  const handleClick = (unit: string) => {
+    setStoreUnit(unit);
+  }  
 
   const handleSave = () => {
     setSave(!save);
@@ -35,15 +37,17 @@ function Header({subtitle, title, icon, text}: HeaderProps) {
         )}
         <div>
             <button 
-                onClick={() => handleClick('celsius')} 
-                className={unit === 'celsius' ? 'active' : ''}
-                >C
+                onClick={() => handleClick('metric')} 
+                className={storeUnit === 'metric' ? 'active' : ''}
+                >
+                    C
             </button>
              <p>/</p>
             <button 
-                onClick={() => handleClick('fahrenheit')} 
-                className={unit === 'fahrenheit' ? 'active' : ''}
-                >F
+                onClick={() => handleClick('imperial')} 
+                className={storeUnit === 'imperial' ? 'active' : ''}
+                >
+                    F
             </button>
         </div>
       </section>
