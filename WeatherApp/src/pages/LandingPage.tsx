@@ -10,6 +10,17 @@ function LandingPage() {
     weatherData: state.weatherData,
   }));
   const { getWeatherData } = useApi();
+  const formatDate = (date: Date) => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dayOfWeek = days[date.getDay()];
+    const dayOfMonth = date.getDate();
+    const month = months[date.getMonth()];
+    return `${dayOfWeek}, ${dayOfMonth} ${month}`;
+  }
+
+  const today = new Date();
+  const formattedDate = formatDate(today);
 
   useEffect(() => {
     getWeatherData();
@@ -17,7 +28,7 @@ function LandingPage() {
 
   return (
     <div>
-        <Header></Header>
+        <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
         <WeatherIcon></WeatherIcon>
     </div>
   );
