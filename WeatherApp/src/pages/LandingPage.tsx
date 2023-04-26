@@ -29,7 +29,7 @@ function LandingPage() {
   return (
     <div>
         <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
-        <WeatherIcon></WeatherIcon>
+        { weatherData && <WeatherIcon weatherCondition={weatherData.weather[0].main} degree={weatherData.main.temp} ></WeatherIcon>}
     </div>
   );
 }
