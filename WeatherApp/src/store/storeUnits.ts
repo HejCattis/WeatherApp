@@ -1,8 +1,13 @@
 import { create } from "zustand";
 
-const useStoreUnit = create((set) => ({
-  storeUnit: 'metric',
-  setStoreUnit: (storeUnit : string) => set({ storeUnit }),
+interface StoreUnitState {
+  storeUnit: string;
+  setStoreUnit: (storeUnit: string) => void;
+}
+
+const useStoreUnit = create<StoreUnitState>((set) => ({
+  storeUnit: "metric",
+  setStoreUnit: (storeUnit: string) => set({ storeUnit }),
 }));
 
 export default useStoreUnit;
