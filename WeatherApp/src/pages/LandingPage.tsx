@@ -8,19 +8,32 @@ import SunTime from "../components/SunTime";
 import CurrentInfo from "../components/CurrentInfo";
 import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
+import { ApiResponse } from "../interface/ApiResponse";
+import ApiTest from "../components/ApiTest";
 
 
 function LandingPage() {
-  const { weatherData } = useStoreWeather((state) => ({
+  const { weatherData, forecastData, setWeatherData, setForecastData } = useStoreWeather((state) => ({
+    setForecastData: state.setForecastData,
+    setWeatherData: state.setWeatherData,
     weatherData: state.weatherData,
+    forecastData: state.forecastData,
   }));
   
-  const { getWeatherData } = Api();
+  
+
   const formattedDate = formatDate(new Date());
 
   useEffect(() => {
-    getWeatherData();
-  }, []);
+    const api = ApiTest();
+    const fakeData = api.getWeatherData();
+    const fakeForecast = api.getForecastData()
+    setWeatherData(fakeData);
+    setForecastData(fakeForecast)
+
+}, []);
+
+ 
 
   const current = [
     {
