@@ -6,7 +6,7 @@ import useStoreUnit from "../store/storeUnits";
 
 interface HeaderProps {
   title: string | undefined
-  subtitle: string | undefined 
+  subtitle?: string | undefined
   icon?: true
   text: string
 }

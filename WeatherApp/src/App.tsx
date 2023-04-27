@@ -1,9 +1,10 @@
 import LandingPage from './pages/LandingPage'
+import SavedPage from './pages/SavedPage'
 
 function App() {
   return (
     <div>
-      <LandingPage></LandingPage>
+      <SavedPage></SavedPage>
     </div>
   )
 }
