@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Api from "../components/Api";
 import useStoreWeather from "../store/storeWeather";
 import Header from "../components/Header";
 import WeatherIcon from "../components/WeatherIcon";
@@ -8,7 +7,6 @@ import SunTime from "../components/SunTime";
 import CurrentInfo from "../components/CurrentInfo";
 import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
-import { ApiResponse } from "../interface/ApiResponse";
 import ApiTest from "../components/ApiTest";
 import Forecast from "../components/Forecast";
 
@@ -34,7 +32,6 @@ function LandingPage() {
 }, []);
 
 
-
   const current = [
     {
       title: 'Today',
@@ -43,22 +40,21 @@ function LandingPage() {
     },
     {
       title: 'Wind',
-      desc: weatherData?.wind.speed,
+      desc: weatherData?.wind.speed + ' m/s',
       icon: <FaWind></FaWind>
     },
     {
       title: 'Humidity',
-      desc: weatherData?.main.humidity,
+      desc: weatherData?.main.humidity + ' %',
       icon: <MdWaterDrop></MdWaterDrop>
     },
     {
       title: 'Visibility',
-      desc: weatherData?.visibility,
+      desc: weatherData?.visibility + ' m ',
       icon: <FaEye></FaEye>
     }
   ]
-
-
+  
   return (
     <div>
         <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
