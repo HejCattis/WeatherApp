@@ -27,7 +27,4 @@ const useStoreWeather = create<StoreWeather>((set, get) => ({
     })),
 }));
 
-useStoreWeather.subscribe((state) => console.log(state.forecastData));
-
-
 export default useStoreWeather;

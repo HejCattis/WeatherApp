@@ -30,7 +30,6 @@ function LandingPage() {
     const fakeForecast = api.getForecastData()
     setWeatherData(fakeData);
     setForecastData(fakeForecast)
-
 }, []);
 
  

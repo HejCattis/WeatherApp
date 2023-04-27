@@ -45,6 +45,7 @@ function ApiTest () {
       name: "Abbey Wood",
       cod: 200,
     };
+    console.log('Weather kallad')
     return fakeData;
       };
 
@@ -1533,6 +1534,7 @@ function ApiTest () {
               "sunset": 1682447109
           }
         };
+        console.log('Forecast kallad')
          return fakeForecast}
 
       return { getWeatherData, getForecastData };
