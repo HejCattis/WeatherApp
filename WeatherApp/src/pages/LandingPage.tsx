@@ -10,6 +10,7 @@ import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
 import { ApiResponse } from "../interface/ApiResponse";
 import ApiTest from "../components/ApiTest";
+import Forecast from "../components/Forecast";
 
 
 function LandingPage() {
@@ -32,7 +33,7 @@ function LandingPage() {
     setForecastData(fakeForecast)
 }, []);
 
- 
+
 
   const current = [
     {
@@ -57,12 +58,14 @@ function LandingPage() {
     }
   ]
 
+
   return (
     <div>
         <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
         { weatherData && <WeatherIcon weatherCondition={weatherData.weather[0].main} degree={weatherData.main.temp} ></WeatherIcon>}
         { weatherData && <SunTime sunrise={weatherData.sys.sunrise} sunset={weatherData.sys.sunset}></SunTime>}
         { weatherData && <CurrentInfo current={current}></CurrentInfo>}
+        { forecastData && <Forecast></Forecast>}
     </div>
   );
 }
