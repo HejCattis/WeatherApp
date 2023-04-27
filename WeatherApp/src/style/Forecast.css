@@ -40,3 +40,8 @@
     font-size: 14px;
     text-align: center;
 }
+
+.forecast-container > section > .forecast-time .now{
+    font-weight: 600;
+    color: #12355B;
+}
