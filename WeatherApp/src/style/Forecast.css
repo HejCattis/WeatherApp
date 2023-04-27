@@ -1,0 +1,42 @@
+.forecast-container {
+    display: flex;
+    overflow-x: scroll;
+    max-width: 80vw;
+    margin: 0 auto 0 auto;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #12355B transparent;
+
+}
+
+.forecast-container::-webkit-scrollbar {
+    display: block;
+    width: 2px;
+    height: 3px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+    background-color: #12355B;
+}
+
+.forecast-container > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-width: 55px;
+    padding-bottom: 7px;
+}
+
+.forecast-container > section > div {
+    font-size: 30px;
+    color: #12355B;
+    height: 40px;
+}
+
+
+.forecast-container > section > .forecast-time {
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+}
