@@ -1,8 +1,8 @@
 import "../style/Header.css"
 import { FaRegStar, FaStar } from "react-icons/fa";
-import useStoreUnit from "../store/storeUnits";
 import { useState } from "react";
-import useStoreWeather from "../store/storeWeather";
+import {  useUnitSwitch } from "../utils/handleUnitSwitch";
+import useStoreUnit from "../store/storeUnits";
 
 interface HeaderProps {
   title: string | undefined
@@ -12,23 +12,11 @@ interface HeaderProps {
 }
 
 function Header({subtitle, title, icon, text}: HeaderProps) {
+  const handleUnitSwitch = useUnitSwitch();
+  const { storeUnit } = useStoreUnit();
 
   const [save, setSave] = useState(false)
 
-  const { storeUnit, setStoreUnit } = useStoreUnit();
-  const { updateWeatherData, weatherData } = useStoreWeather();
-
-  const handleClick = (unit: string) => {
-    if (storeUnit !== unit) { // only update if the selected unit is different
-      setStoreUnit(unit);
-  
-      const temperature = weatherData?.main?.temp;
-      if (temperature) {
-        const convertedTemp = unit === 'metric' ? (temperature - 32) * 5 / 9 : temperature * 9 / 5 + 32;
-        updateWeatherData({ main: { ...weatherData.main, temp: convertedTemp } });
-      }
-    }
-  }
    
 // FIXA DENNA
   const handleSave = () => {
@@ -48,7 +36,7 @@ function Header({subtitle, title, icon, text}: HeaderProps) {
         )}
         <div>
             <button 
-                onClick={() => handleClick('metric')} 
+                onClick={() => handleUnitSwitch('metric')} 
                 className={storeUnit === 'metric' ? 'active' : ''}
                 disabled={storeUnit === 'metric'}
                 >
@@ -56,7 +44,7 @@ function Header({subtitle, title, icon, text}: HeaderProps) {
             </button>
             <p>/</p>
             <button 
-                onClick={() => handleClick('imperial')} 
+                onClick={() => handleUnitSwitch('imperial')} 
                 className={storeUnit === 'imperial' ? 'active' : ''}
                 disabled={storeUnit === 'imperial'}
                 >
