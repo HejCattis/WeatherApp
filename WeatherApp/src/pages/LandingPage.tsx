@@ -12,12 +12,7 @@ import Api from "../components/Api";
 
 
 function LandingPage() {
-  const { weatherData, forecastData, setWeatherData, setForecastData } = useStoreWeather((state) => ({
-    setForecastData: state.setForecastData,
-    setWeatherData: state.setWeatherData,
-    weatherData: state.weatherData,
-    forecastData: state.forecastData,
-  }));
+  const { weatherData, forecastData} = useStoreWeather()
 
   const formattedDate = formatDate(new Date());
 
