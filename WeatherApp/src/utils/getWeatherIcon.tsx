@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import { FaSun, FaCloud, FaCloudRain, FaBolt, FaSnowflake } from 'react-icons/fa';
 
 
-export function getWeatherIcon(main :string) {
+export function getWeatherIcon(main: string | null | undefined | number | ReactNode) {
     switch (main) {
       case 'Clear':
         return <FaSun />;

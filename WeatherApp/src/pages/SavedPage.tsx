@@ -3,7 +3,6 @@ import { DataItem } from "../components/Table";
 import SortableTable from "../components/SortableTable";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
 import Navbar from "../components/Navbar";
-import useStoreUnit from "../store/storeUnits";
 import useStoreSaved from "../store/storeSaved";
 
 
@@ -14,36 +13,14 @@ function SavedPage() {
 
     const { storeSaved } = useStoreSaved();
 
-    // const test = 'Clear'
-    // const test2 = 'Rain'
-    // const test3= 'Snow'
-    // const data: DataItem[] = [
-    //     {
-    //         icon: getWeatherIcon(test),
-    //         degree: 4,
-    //         city: 'Stockholm', 
-    //     },
-    //     {
-    //         icon: getWeatherIcon(test2),
-    //         degree: 10, 
-    //         city: 'London', 
-
-    //     },
-    //     {
-    //         icon: getWeatherIcon(test3),
-    //         degree: 13, 
-    //         city: 'Helsingfors', 
-    //     }
-    // ]
-
     const config = [
         {
             label: 'Icon', 
-            render: (storeSaved: DataItem) => <>{storeSaved.icon}</>
+            render: (storeSaved: DataItem) => <>{getWeatherIcon(storeSaved.icon)}</>
         },
         {
             label: 'Degree', 
-            render: (storeSaved: DataItem) => <>{storeSaved.degree}</>,
+            render: (storeSaved: DataItem) => <>{Math.round(storeSaved.degree)}</>,
             sortValue: (storeSaved: DataItem) => storeSaved.degree
         },
         {
