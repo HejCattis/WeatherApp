@@ -1,6 +1,7 @@
 import { ApiResponse } from "../interface/ApiResponse";
 
 function ApiTest () {
+    
     const getWeatherData = () => {
         const fakeData: ApiResponse = {
       coord: {

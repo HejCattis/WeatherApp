@@ -12,7 +12,7 @@ interface StoreWeather {
   updateForecastData: any;
 }
 
-const useStoreWeather = create<StoreWeather>((set, get) => ({
+const useStoreWeather = create<StoreWeather>((set) => ({
   weatherData: null,
   forecastData: null,
   setWeatherData: (weatherData) => set(() => ({ weatherData })),

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useStoreWeather from "../store/storeWeather";
 import Header from "../components/Header";
 import WeatherIcon from "../components/WeatherIcon";
@@ -7,9 +6,9 @@ import SunTime from "../components/SunTime";
 import CurrentInfo from "../components/CurrentInfo";
 import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
-import ApiTest from "../components/ApiTest";
 import Forecast from "../components/Forecast";
 import Navbar from "../components/Navbar";
+import Api from "../components/Api";
 
 
 function LandingPage() {
@@ -19,19 +18,8 @@ function LandingPage() {
     weatherData: state.weatherData,
     forecastData: state.forecastData,
   }));
-  
-  
 
   const formattedDate = formatDate(new Date());
-
-  useEffect(() => {
-    const api = ApiTest();
-    const fakeData = api.getWeatherData();
-    const fakeForecast = api.getForecastData()
-    setWeatherData(fakeData);
-    setForecastData(fakeForecast)
-}, []);
-
 
   const current = [
     {
@@ -59,6 +47,7 @@ function LandingPage() {
   return (
     <div>
         <Navbar></Navbar>
+        <Api></Api>
         <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
         { weatherData && <WeatherIcon weatherCondition={weatherData.weather[0].main} degree={weatherData.main.temp} ></WeatherIcon>}
         { weatherData && <SunTime sunrise={weatherData.sys.sunrise} sunset={weatherData.sys.sunset}></SunTime>}
