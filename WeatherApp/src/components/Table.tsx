@@ -30,10 +30,10 @@ function Table({ data, config, getKey }: TableProps) {
     const renderedRows = data.map((item) => {
         // Renders the cells for each row
         const cells = config.map((column) => {
-            return <td key={column.label} className="p-3">{column.render(item)}</td>;
+            return <td key={column.label}>{column.render(item)}</td>;
         });
         // Returns a row with the cells and a unique key
-        return <tr key={getKey(item)} className="border-b">{cells}</tr>;
+        return <tr key={getKey(item)}>{cells}</tr>;
     });
 
     // Renders the headers of the table

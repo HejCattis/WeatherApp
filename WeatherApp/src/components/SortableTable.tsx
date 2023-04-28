@@ -2,7 +2,6 @@ import "../style/Table.css"
 import { useState } from "react";
 import Table from "./Table"
 import { TableProps } from "./Table";
-import { GoArrowSmallUp, GoArrowSmallDown } from "react-icons/go";
 import { FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
 
 
