@@ -1,3 +1,4 @@
+import "../style/Table.css"
 import { Key } from "react";
 import { Fragment } from "react";
 

@@ -1,7 +1,10 @@
+import "../style/Table.css"
 import { useState } from "react";
 import Table from "./Table"
 import { TableProps } from "./Table";
 import { GoArrowSmallUp, GoArrowSmallDown } from "react-icons/go";
+import { FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
+
 
 
 function SortableTable(props : TableProps) {
@@ -36,9 +39,9 @@ function SortableTable(props : TableProps) {
         return {
             ...column,
             header: () => (
-                <th className="cursor-pointer hover:bg-gray-100" onClick={() => handleClick(column.label)}>
-                    <div className="flex items-center">
-                        {getIcons(column.label, sortBy, sortOrder)}
+                <th className="sortable" onClick={() => handleClick(column.label)}>
+                    <div>
+                        <span>{getIcons(column.label, sortBy, sortOrder)}</span>
                         {column.label}
                     </div>
                 </th>)
@@ -72,29 +75,27 @@ function SortableTable(props : TableProps) {
 function getIcons(label: string, sortBy: string | null, sortOrder: string | null ) {
     if (label !== sortBy){
         return (
-            <div>
-                <GoArrowSmallUp></GoArrowSmallUp>
-                <GoArrowSmallDown></GoArrowSmallDown>
+            <div className="sortable-icons grey">
+                <FaSort></FaSort>
             </div>
         )
     }
     if (sortOrder === null) {
         return (
-            <div>
-                <GoArrowSmallUp></GoArrowSmallUp>
-                <GoArrowSmallDown></GoArrowSmallDown>
+            <div className="sortable-icons grey">
+                <FaSort></FaSort>
             </div>
         )
     } else if (sortOrder === 'asc') {
         return (
-            <div>
-                <GoArrowSmallUp></GoArrowSmallUp>
+            <div className="sortable-icons">
+                <FaSortDown></FaSortDown>
             </div>
         )
     } else if (sortOrder === 'desc'){
         return (
-            <div>
-                <GoArrowSmallDown></GoArrowSmallDown>
+            <div className="sortable-icons">
+                <FaSortUp></FaSortUp>
             </div>
         )
     }
