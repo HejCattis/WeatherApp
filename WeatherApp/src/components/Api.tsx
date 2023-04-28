@@ -8,12 +8,12 @@ function Api() {
   const { storeUnit } = useStoreUnit();
 
   function fetchCurrentLocationWeatherData(latitude: number, longitude: number) {
-    const apiCurrentLocation = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${storeUnit}&appid=${import.meta.env.VITE_APIkey}`;
+    const apiCurrentLocation = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${storeUnit}&appid=${import.meta.env.VITE_APIkey2}`;
     return axios.get(apiCurrentLocation);
   }
 
   function fetchCurrentLocationForecastData(latitude: number, longitude: number) {
-    const apiCurrentLocation = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${storeUnit}&appid=${import.meta.env.VITE_APIkey}`;
+    const apiCurrentLocation = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${storeUnit}&appid=${import.meta.env.VITE_APIkey2}`;
     return axios.get(apiCurrentLocation);
   }
 

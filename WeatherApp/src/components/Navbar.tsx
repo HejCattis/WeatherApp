@@ -20,12 +20,19 @@ function Navbar() {
   };  
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (inputRef.current) {
-        setSearch(!search);
-        navigate(`/search/${inputRef.current.value}`);
-    }
-  };
+  event.preventDefault();
+  if (inputRef.current) {
+    const searchQuery = inputRef.current.value
+      .replace(/å/g, "%C3%A5")
+      .replace(/ä/g, "%C3%A4")
+      .replace(/ö/g, "%C3%B6");
+
+    setSearch(!search);
+    navigate(`/search/${searchQuery}`);
+  }
+};
+
+  
 
 
   return (

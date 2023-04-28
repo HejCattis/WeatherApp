@@ -10,7 +10,7 @@ interface HeaderProps {
   title: string | undefined
   subtitle?: string | undefined
   icon?: true
-  text: string
+  text: string | undefined
 }
 
 function Header({subtitle, title, icon, text}: HeaderProps) {

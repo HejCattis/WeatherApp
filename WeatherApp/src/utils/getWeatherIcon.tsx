@@ -6,7 +6,16 @@ export function getWeatherIcon(main: string | null | undefined | number | ReactN
     switch (main) {
       case 'Clear':
         return <FaSun />;
-      case 'Clouds':
+        case "Mist":
+            case "Smoke":
+            case "Haze":
+            case "Dust":
+            case "Fog":
+            case "Sand":
+            case "Ash":
+            case "Squall":
+            case "Tornado":
+            case "Clouds":
         return <FaCloud />;
       case 'Rain':
       case 'Drizzle':
