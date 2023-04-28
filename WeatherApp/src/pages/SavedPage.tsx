@@ -4,19 +4,18 @@ import SortableTable from "../components/SortableTable";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
 
 
+
 function SavedPage() {
     const title = "Saved locations"
     const titleText = "The locations is only saved in the session"
 
-
-    
     const test = 'Clear'
     const test2 = 'Rain'
     const test3= 'Snow'
     const data: DataItem[] = [
         {
             icon: getWeatherIcon(test),
-            degree: 4, 
+            degree: 4,
             city: 'Stockholm', 
         },
         {
