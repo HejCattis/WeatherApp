@@ -1,10 +1,12 @@
 import { useCallback } from "react";
 import useStoreUnit from "../store/storeUnits";
 import useStoreWeather from "../store/storeWeather";
+import useStoreSaved from "../store/storeSaved";
 
 export const useUnitSwitch = () => {
   const { storeUnit, setStoreUnit } = useStoreUnit();
   const { updateWeatherData, weatherData, forecastData, updateForecastData } = useStoreWeather();
+  const { storeSaved, setStoreSaved } = useStoreSaved();
 
   const handleUnitSwitch = useCallback(
     (unit: string) => {
@@ -34,9 +36,17 @@ export const useUnitSwitch = () => {
         if (updatedForecastData) {
           updateForecastData({ ...forecastData, list: updatedForecastData });
         }
+
+        // update saved data
+        const updatedSavedData = storeSaved.map((item) => {
+          const { degree, ...rest } = item;
+          const convertedDegree = unit === "metric" ? ((degree - 32) * 5) / 9 : (degree * 9) / 5 + 32;
+          return { ...rest, degree: convertedDegree };
+        });
+        setStoreSaved(() => updatedSavedData);
       }
     },
-    [storeUnit, setStoreUnit, updateWeatherData, weatherData, forecastData, updateForecastData]
+    [storeUnit, setStoreUnit, updateWeatherData, weatherData, forecastData, updateForecastData, storeSaved, setStoreSaved]
   );
 
   return handleUnitSwitch;
