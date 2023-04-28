@@ -1,8 +1,10 @@
 import "../style/Header.css"
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { useState } from "react";
-import {  useUnitSwitch } from "../utils/handleUnitSwitch";
+import { useState, useEffect } from "react";
+import { useUnitSwitch } from "../utils/handleUnitSwitch";
 import useStoreUnit from "../store/storeUnits";
+import useStoreSaved from "../store/storeSaved";
+import useStoreWeather from "../store/storeWeather";
 
 interface HeaderProps {
   title: string | undefined
@@ -14,14 +16,36 @@ interface HeaderProps {
 function Header({subtitle, title, icon, text}: HeaderProps) {
   const handleUnitSwitch = useUnitSwitch();
   const { storeUnit } = useStoreUnit();
+  const { storeSaved, setStoreSaved } = useStoreSaved();
+  const {weatherData} = useStoreWeather();
 
   const [save, setSave] = useState(false)
 
-   
-// FIXA DENNA
+  useEffect(() => {
+    const cityName = weatherData?.name;
+    if (cityName) {
+      const isCitySaved = storeSaved.some((savedCity) => savedCity.city === cityName);
+      setSave(isCitySaved);
+    } else {
+      setSave(false);
+    }
+  }, [storeSaved, weatherData?.name]);
+
   const handleSave = () => {
-    setSave(!save);
-  }
+    const cityName = weatherData?.name;
+    
+    if (cityName && !save) {
+      setStoreSaved((prev) => [
+        ...prev,
+        {
+          city: cityName,
+          degree: weatherData.main.temp,
+          icon: weatherData.weather[0].main,
+        },
+      ]);
+      setSave(true);
+    }
+  };
 
   return (
     <div className="container">
@@ -32,30 +56,28 @@ function Header({subtitle, title, icon, text}: HeaderProps) {
       </section>
       <section className="section-icons">
         {icon && (
-            save ? <FaStar className="icon" onClick={handleSave} /> : <FaRegStar className="icon" onClick={handleSave} />
+          save ? <FaStar className="icon" /> : <FaRegStar className="icon" onClick={handleSave} />
         )}
         <div>
-            <button 
-                onClick={() => handleUnitSwitch('metric')} 
-                className={storeUnit === 'metric' ? 'active' : ''}
-                disabled={storeUnit === 'metric'}
-                >
-                    C
-            </button>
-            <p>/</p>
-            <button 
-                onClick={() => handleUnitSwitch('imperial')} 
-                className={storeUnit === 'imperial' ? 'active' : ''}
-                disabled={storeUnit === 'imperial'}
-                >
-                    F
-            </button>
-
+          <button 
+            onClick={() => handleUnitSwitch('metric')} 
+            className={storeUnit === 'metric' ? 'active' : ''}
+            disabled={storeUnit === 'metric'}
+          >
+            C
+          </button>
+          <p>/</p>
+          <button 
+            onClick={() => handleUnitSwitch('imperial')} 
+            className={storeUnit === 'imperial' ? 'active' : ''}
+            disabled={storeUnit === 'imperial'}
+          >
+            F
+          </button>
         </div>
       </section>
     </div>
   );
-  
 }
 
 export default Header;

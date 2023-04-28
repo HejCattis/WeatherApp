@@ -3,6 +3,8 @@ import { DataItem } from "../components/Table";
 import SortableTable from "../components/SortableTable";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
 import Navbar from "../components/Navbar";
+import useStoreUnit from "../store/storeUnits";
+import useStoreSaved from "../store/storeSaved";
 
 
 
@@ -10,42 +12,44 @@ function SavedPage() {
     const title = "Saved locations"
     const titleText = "The locations is only saved in the session"
 
-    const test = 'Clear'
-    const test2 = 'Rain'
-    const test3= 'Snow'
-    const data: DataItem[] = [
-        {
-            icon: getWeatherIcon(test),
-            degree: 4,
-            city: 'Stockholm', 
-        },
-        {
-            icon: getWeatherIcon(test2),
-            degree: 10, 
-            city: 'London', 
+    const { storeSaved } = useStoreSaved();
 
-        },
-        {
-            icon: getWeatherIcon(test3),
-            degree: 13, 
-            city: 'Helsingfors', 
-        }
-    ]
+    // const test = 'Clear'
+    // const test2 = 'Rain'
+    // const test3= 'Snow'
+    // const data: DataItem[] = [
+    //     {
+    //         icon: getWeatherIcon(test),
+    //         degree: 4,
+    //         city: 'Stockholm', 
+    //     },
+    //     {
+    //         icon: getWeatherIcon(test2),
+    //         degree: 10, 
+    //         city: 'London', 
+
+    //     },
+    //     {
+    //         icon: getWeatherIcon(test3),
+    //         degree: 13, 
+    //         city: 'Helsingfors', 
+    //     }
+    // ]
 
     const config = [
         {
             label: 'Icon', 
-            render: (savedCity: DataItem) => <>{savedCity.icon}</>
+            render: (storeSaved: DataItem) => <>{storeSaved.icon}</>
         },
         {
             label: 'Degree', 
-            render: (savedCity: DataItem) => <>{savedCity.degree}</>,
-            sortValue: (savedCity: DataItem) => savedCity.degree
+            render: (storeSaved: DataItem) => <>{storeSaved.degree}</>,
+            sortValue: (storeSaved: DataItem) => storeSaved.degree
         },
         {
             label: 'City', 
-            render: (savedCity: DataItem) => <>{savedCity.city}</>,
-            sortValue: (savedCity: DataItem) => savedCity.city
+            render: (storeSaved: DataItem) => <>{storeSaved.city}</>,
+            sortValue: (storeSaved: DataItem) => storeSaved.city
         },
       ]
     
@@ -55,7 +59,9 @@ function SavedPage() {
         <div>
             <Navbar></Navbar>
             <Header title={title} text={titleText}></Header>
-            <SortableTable data={data} config={config} getKey={getKey}></SortableTable>
+            { storeSaved.length > 0 ? 
+            <SortableTable data={storeSaved} config={config} getKey={getKey}></SortableTable>
+            : <p style={{width: "80vw", margin: "0 auto", fontStyle: "italic"}}>No location saved.</p>}        
         </div>
     )
 }
