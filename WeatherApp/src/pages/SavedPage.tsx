@@ -1,7 +1,8 @@
 import Header from "../components/Header"
-import {DataItem} from "../components/Table";
+import { DataItem } from "../components/Table";
 import SortableTable from "../components/SortableTable";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
+import Navbar from "../components/Navbar";
 
 
 
@@ -52,6 +53,7 @@ function SavedPage() {
 
     return (
         <div>
+            <Navbar></Navbar>
             <Header title={title} text={titleText}></Header>
             <SortableTable data={data} config={config} getKey={getKey}></SortableTable>
         </div>

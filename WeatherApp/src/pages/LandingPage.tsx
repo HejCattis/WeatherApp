@@ -9,6 +9,7 @@ import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
 import ApiTest from "../components/ApiTest";
 import Forecast from "../components/Forecast";
+import Navbar from "../components/Navbar";
 
 
 function LandingPage() {
@@ -57,6 +58,7 @@ function LandingPage() {
   
   return (
     <div>
+        <Navbar></Navbar>
         <Header title={weatherData?.name} subtitle={weatherData?.sys.country} text={formattedDate} icon></Header>
         { weatherData && <WeatherIcon weatherCondition={weatherData.weather[0].main} degree={weatherData.main.temp} ></WeatherIcon>}
         { weatherData && <SunTime sunrise={weatherData.sys.sunrise} sunset={weatherData.sys.sunset}></SunTime>}
