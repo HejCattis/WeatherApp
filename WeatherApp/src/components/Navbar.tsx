@@ -1,5 +1,5 @@
 import "../style/Navbar.css"
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { MdSearch } from "react-icons/md";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -40,7 +40,7 @@ function Navbar() {
         <nav>
             <MdSearch onClick={handleClick}></MdSearch>
             <Link to="/" className="brand">
-              Weather<span>App</span>
+              Weather<span>Women</span>
             </Link>
             <Link to="/saved">
               {isSavedPage ? <FaStar></FaStar> : <FaRegStar></FaRegStar>}

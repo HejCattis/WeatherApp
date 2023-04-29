@@ -32,9 +32,17 @@ p {
     font-size: 16px;
     font-weight: 400;
 }
+
+.saved-p {
+    width: 80vw;
+    max-width: 700px;
+    margin: 0 auto 0 auto;
+    font-style: italic;
+}
 @media only screen and (min-width: 768px) { 
     #root {
         max-width: 1200px;
+        min-height: 600px;
         margin: 25px auto 0 auto;
         background-color: #fff;
         padding: 25px 0 25px 0;

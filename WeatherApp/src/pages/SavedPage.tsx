@@ -38,7 +38,7 @@ function SavedPage() {
             <Header title={title} text={titleText}></Header>
             { storeSaved.length > 0 ? 
             <SortableTable data={storeSaved} config={config} getKey={getKey}></SortableTable>
-            : <p style={{width: "80vw", margin: "0 auto", fontStyle: "italic"}}>No location saved.</p>}        
+            : <p className="saved-p">No location saved.</p>}        
         </div>
     )
 }
