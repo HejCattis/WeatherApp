@@ -57,7 +57,7 @@ function WeatherIcon({ weatherCondition, degree }: WeatherIconProps) {
       <div className="weather-current-info">
         <div>
           <h2>{Math.floor(degree)}</h2>
-          <h3>{storeUnit === "metric" ? "C" : "F"}</h3>
+          <h3>{storeUnit === "metric" ? "°C" : "°F"}</h3>
         </div>
         <h3>{weatherCondition}</h3>
       </div>

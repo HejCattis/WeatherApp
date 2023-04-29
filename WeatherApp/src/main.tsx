@@ -10,6 +10,8 @@ import SavedPage from './pages/SavedPage';
 import ErrorPage from './pages/ErrorPage';
 import SearchPage from './pages/SearchPage';
 import SearchApi from './components/SearchApi';
+import LineChart from './components/LineChart';
+
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <SearchPage></SearchPage>,
+  },
+  {
+    path: "/chart",
+    element: <LineChart></LineChart>,
   },
 ]);
 

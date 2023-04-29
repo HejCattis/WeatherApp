@@ -8,6 +8,7 @@ import { FaWind, FaEye  } from "react-icons/fa";
 import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
 import Forecast from "../components/Forecast";
 import Navbar from "../components/Navbar";
+import LineChart from "../components/LineChart";
 
 
 
@@ -47,6 +48,7 @@ function SearchPage() {
           { weatherData && <SunTime sunrise={weatherData.sys.sunrise} sunset={weatherData.sys.sunset}></SunTime>}
           { weatherData && <CurrentInfo current={current}></CurrentInfo>}
           { forecastData && <Forecast></Forecast>}
+          { forecastData && <LineChart></LineChart>}
       </div>
     );
 }

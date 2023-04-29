@@ -9,6 +9,7 @@ import { MdWaterDrop, MdOutlineCalendarToday } from "react-icons/md";
 import Forecast from "../components/Forecast";
 import Navbar from "../components/Navbar";
 import Api from "../components/Api";
+import LineChart from "../components/LineChart";
 
 
 function LandingPage() {
@@ -48,6 +49,7 @@ function LandingPage() {
         { weatherData && <SunTime sunrise={weatherData.sys.sunrise} sunset={weatherData.sys.sunset}></SunTime>}
         { weatherData && <CurrentInfo current={current}></CurrentInfo>}
         { forecastData && <Forecast></Forecast>}
+        { forecastData && <LineChart></LineChart>}
     </div>
   );
 }
