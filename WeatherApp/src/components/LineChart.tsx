@@ -42,7 +42,7 @@ function LineChart() {
           label: `Temperature ${storeUnit === "metric" ? "°C" : "°F"}`,
           data: dataByDate.map((data) => data.temp),
           borderColor: "#12355B",
-          backgroundColor: "#12355B"
+          backgroundColor: "#12355B",
         },
         {
           label: 'Wind Speed (m/s)',
@@ -55,7 +55,10 @@ function LineChart() {
   
     return (
         <div className="chart-container">
-            <Line data={userData} options={{}} />
+            <Line data={userData} options={{
+              
+            }
+        } />
         </div>
     );
   }
