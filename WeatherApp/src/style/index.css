@@ -3,6 +3,8 @@
 * {
     margin: 0;
     padding: 0;
+    
+    ;
 }
 
 body {
@@ -30,4 +32,16 @@ p {
     font-size: 16px;
     font-weight: 400;
 }
+@media only screen and (min-width: 768px) { 
+    #root {
+        max-width: 1200px;
+        margin: 25px auto 0 auto;
+        background-color: #fff;
+        padding: 25px 0 25px 0;
+        border-radius: 10px;
+    }
 
+    body {
+        background-color: #F5F5F5;
+    }
+}

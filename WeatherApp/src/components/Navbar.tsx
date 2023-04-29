@@ -36,7 +36,7 @@ function Navbar() {
 
 
   return (
-    <div>
+    <div className="nav-container">
         <nav>
             <MdSearch onClick={handleClick}></MdSearch>
             <Link to="/" className="brand">

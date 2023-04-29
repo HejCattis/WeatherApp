@@ -3,6 +3,7 @@
     flex-direction: column;
     margin: 25px auto 25px auto;
     width: 80vw;
+    max-width: 700px;
     gap: 15px;
 }
 
