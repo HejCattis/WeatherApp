@@ -10,7 +10,7 @@ import SavedPage from './pages/SavedPage';
 import ErrorPage from './pages/ErrorPage';
 import SearchPage from './pages/SearchPage';
 import SearchApi from './components/SearchApi';
-import BarChart from './components/Chart';
+import LineChart from './components/LineChart';
 
 
 const router = createBrowserRouter([
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chart",
-    element: <BarChart></BarChart>,
+    element: <LineChart></LineChart>,
   },
 ]);
 
