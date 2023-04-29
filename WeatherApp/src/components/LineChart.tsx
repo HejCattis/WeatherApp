@@ -1,12 +1,15 @@
+import "../style/LineChart.css"
 import { useState } from "react";
 import { Line } from "react-chartjs-2"
 import  Chart  from "chart.js/auto"
 import {CategoryScale} from 'chart.js'; 
 import useStoreWeather from "../store/storeWeather";
 import { formatDate } from "../utils/dateUtils"; 
+import useStoreUnit from "../store/storeUnits";
 
 function LineChart() {
     const { forecastData } = useStoreWeather();
+    const { storeUnit } = useStoreUnit();
     if (!forecastData) {
         return null; 
       }
@@ -36,17 +39,25 @@ function LineChart() {
       labels: dataByDate.map((data) => data.date),
       datasets: [
         {
-          label: 'Temperature (°C)',
+          label: `Temperature ${storeUnit === "metric" ? "°C" : "°F"}`,
           data: dataByDate.map((data) => data.temp),
+          borderColor: "#12355B",
+          backgroundColor: "#12355B"
         },
         {
           label: 'Wind Speed (m/s)',
           data: dataByDate.map((data) => data.windSpeed),
+          borderColor: "#D62F2F",
+          backgroundColor: "#D62F2F"
         },
       ],
     });
   
-    return <Line data={userData} options={{}} />;
+    return (
+        <div className="chart-container">
+            <Line data={userData} options={{}} />
+        </div>
+    );
   }
   
   
